@@ -1,12 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://fhu8hvlhsd27"]
 
-[ext_resource type="Script" path="res://scripts/target.gd" id="1_rb154"]
+[ext_resource type="Script" path="res://scenes/target.gd" id="1_3lgpu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rfmg"]
 size = Vector2(32, 32)
 
-[node name="target" type="Node2D"]
-script = ExtResource("1_rb154")
+[node name="target" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_3lgpu")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -14,7 +16,6 @@ script = ExtResource("1_rb154")
 shape = SubResource("RectangleShape2D_5rfmg")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

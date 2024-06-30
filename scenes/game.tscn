@@ -19,24 +19,6 @@ position = Vector2(57, 128)
 [node name="Sprite2D" type="Sprite2D" parent="Targets/target"]
 texture = ExtResource("4_ixteq")
 
-[node name="target2" parent="Targets" instance=ExtResource("3_e3ptt")]
-position = Vector2(57, 128)
-
-[node name="Sprite2D" type="Sprite2D" parent="Targets/target2"]
-texture = ExtResource("4_ixteq")
-
-[node name="target3" parent="Targets" instance=ExtResource("3_e3ptt")]
-position = Vector2(57, 128)
-
-[node name="Sprite2D" type="Sprite2D" parent="Targets/target3"]
-texture = ExtResource("4_ixteq")
-
-[node name="target4" parent="Targets" instance=ExtResource("3_e3ptt")]
-position = Vector2(57, 128)
-
-[node name="Sprite2D" type="Sprite2D" parent="Targets/target4"]
-texture = ExtResource("4_ixteq")
-
 [node name="Cursor" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Cursor"]
@@ -45,19 +27,29 @@ scale = Vector2(1.375, 1.375)
 texture = ExtResource("3_s6t5k")
 
 [node name="Area2D" type="Area2D" parent="Cursor"]
+collision_layer = 0
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/Area2D"]
+[node name="MouseCollider" type="CollisionShape2D" parent="Cursor/Area2D"]
 position = Vector2(1.5, 0.5)
 shape = SubResource("RectangleShape2D_h6l3j")
 
-[node name="Score" type="Label" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 326)
+
+[node name="Score" type="Label" parent="Camera2D"]
 unique_name_in_owner = true
-offset_left = 1087.0
-offset_top = 5.0
-offset_right = 1150.0
-offset_bottom = 49.0
+offset_left = 512.0
+offset_top = -321.0
+offset_right = 575.0
+offset_bottom = -277.0
 theme_override_font_sizes/font_size = 31
 text = "Test"
 
+[node name="ZoomTimer" type="Timer" parent="Camera2D"]
+wait_time = 0.001
+one_shot = true
+
 [connection signal="area_entered" from="Cursor/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Cursor/Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Camera2D/ZoomTimer" to="." method="_on_zoom_timer_timeout"]
