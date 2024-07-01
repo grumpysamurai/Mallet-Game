@@ -30,17 +30,15 @@ shape = SubResource("RectangleShape2D_j6lj1")
 [node name="Targets Group 2" type="Node" parent="."]
 
 [node name="target" parent="Targets Group 2" instance=ExtResource("3_e3ptt")]
-position = Vector2(289, 128)
+position = Vector2(57, 128)
 level = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Targets Group 2/target"]
-scale = Vector2(2, 2)
 texture = ExtResource("4_ixteq")
 
 [node name="Area2D2" type="Area2D" parent="Targets Group 2/target"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Targets Group 2/target/Area2D2"]
-scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_j6lj1")
 
 [node name="Cursor" type="Node2D" parent="."]
